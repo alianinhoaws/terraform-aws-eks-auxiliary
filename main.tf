@@ -273,6 +273,15 @@ module "monitoring" {
   k8s_metrics_interval = lookup(var.monitoring_config, "k8s_metrics_interval", "5m")
 }
 
+### Amazon GuardDuty addon
+module "guardduty" {
+  count        = var.has_guardduty ? 1 : 0
+  source       = "./addons/guardduty"
+  vpc_id       = var.vpc_id
+  subnet_ids   = var.subnet_ids
+  cluster_name = var.cluster_name
+}
+
 data "kubernetes_all_namespaces" "allns" {}
 
 ### Namespace RBAC

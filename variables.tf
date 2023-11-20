@@ -12,6 +12,7 @@ variable "iam_openid_provider_arn" { type = string }
 
 # VPC
 variable "vpc_id" { type = string }
+variable "subnet_ids" { type = list(string) }
 
 # ACM
 variable "acm_arn" {
@@ -51,7 +52,7 @@ variable "has_ascp" { default = false }
 variable "has_kyverno" { default = true }
 variable "mgmt_aws_account" { default = "" }
 
-variable "has_falco" { default = false }
+variable "has_guardduty" { default = false }
 
 variable "has_argocd" { default = false }
 variable "has_argocd_ingress" { default = false }
